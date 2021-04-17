@@ -2,6 +2,8 @@ var fetch = require('node-fetch')
 const Websocket = require('ws')
 const TelegramBot = require('node-telegram-bot-api');
 
+
+// Telegram Bot Options
 const TOKEN = '1621727244:AAHXFdbNSRFvNS45g9Q1ZHNJ92kasH6ZVfw';
 const options = {
     webHook: {
@@ -14,19 +16,7 @@ const bot = new TelegramBot(TOKEN, options);
 bot.setWebHook(`${url}/bot${TOKEN}`);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+// To Get User Tokens & Websocket URL
 async function request_cread() {
     return fetch('https://directline.botframework.com/v3/directline/conversations', {
         method: 'POST',
@@ -41,6 +31,8 @@ async function request_cread() {
     })
 }
 
+
+// Send User Data To API With conversationId
 async function send_data_bot(conversationId, bearer, post_data) {
     return fetch(`https://directline.botframework.com/v3/directline/conversations/${conversationId}/activities`, {
         method: 'POST',
@@ -57,10 +49,21 @@ async function send_data_bot(conversationId, bearer, post_data) {
 }
 
 
-// 
+// Bot Starter....
 
 
 bot.on('message', function onMessage(msg) {
+
+
+    if (msg.text.toLowerCase() == '/start') {
+        bot.sendMessage(msg.chat.id, `Hello ${msg.from.username},\nWelcome To Yallah365 Bot.\n\nThis Bot Allows You To Get Your\nMicrosoft 365 Account Details.\n\nFor More Helps(/help).`)
+    } else if (msg.text.toLowerCase() == '/start') {
+        bot.sendMessage(msg.chat.id, `To get You Account Details,\nPlease write your CPR:Block\n\nExample:\n 012345678:1234`)
+    } else {
+
+    }
+
+
     if (msg.text.includes(':')) {
         var cpr = msg.text.split(':')[0]
         var mogam3 = msg.text.split(':')[1]
