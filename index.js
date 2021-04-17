@@ -57,7 +57,7 @@ bot.on('message', function onMessage(msg) {
 
     if (msg.text.toLowerCase() == '/start') {
         bot.sendMessage(msg.chat.id, `Hello ${msg.from.username},\nWelcome To Yallah365 Bot.\n\nThis Bot Allows You To Get Your\nMicrosoft 365 Account Details.\n\nFor More Helps(/help).`)
-    } else if (msg.text.toLowerCase() == '/start') {
+    } else if (msg.text.toLowerCase() == '/help') {
         bot.sendMessage(msg.chat.id, `To get You Account Details,\nPlease write your CPR:Block\n\nExample:\n 012345678:1234`)
     } else {
 
